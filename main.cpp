@@ -1,19 +1,19 @@
 #define KEY e.key.keysym.sym
-#include <SDL2/SDL.h>
+#include <SDL.h>
 #include <iostream>
 #include <vector>
-#include <SDL2/SDL_image.h>
-#include <SDL2/SDL_ttf.h>
-#include <SDL2/SDL_mixer.h>
+#include <SDL_image.h>
+#include <SDL_ttf.h>
+#include <SDL_mixer.h>
 #include <random>
 #include <cstdlib>
 #include <string>
 
-#include "Vector2.hpp"
-#include "Window.hpp"
-#include "CommonGameUtils.hpp"
-#include "Fish.hpp"
-#include "Player.hpp"
+#include "includes/Vector2.hpp"
+#include "includes/Window.hpp"
+#include "includes/CommonGameUtils.hpp"
+#include "includes/Fish.hpp"
+#include "includes/Player.hpp"
 
 int randomgen(int max, int min = 0) //Pass in range
 {
@@ -43,8 +43,8 @@ int main( int argc, char* args[] )
 	else {
 		if(!(IMG_Init(IMG_INIT_PNG)))
 			std::cout << "ERROR::IMG_INIT::IMG_INIT_PNG" << SDL_GetError() <<std::endl;		
-		if(!(TTF_Init()))
-			std::cout << "ERROR::TTF_INIT" << TTF_GetError() << std::endl;
+		if(TTF_Init() != 0)
+			std::cout << "ERROR::TTF_INIT" << SDL_GetError() << std::endl;
 		if( Mix_OpenAudio( 44100, MIX_DEFAULT_FORMAT, 2, 2048 ) < 0 )
          std::cout << "ERROR::SDL_mixer::MIXER_INIT\n" << Mix_GetError() << std::endl;
 	}
