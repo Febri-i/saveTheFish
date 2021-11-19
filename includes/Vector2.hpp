@@ -66,6 +66,9 @@ class Vector2
 			typeName lenght = sqrt(pow(x, 2) + pow(y, 2));
 			return Vector2<typeName>(x / lenght, y / lenght);
 		}
+		else {
+                  return NULL;
+		}
 	}
 
 	typeName x, y;
